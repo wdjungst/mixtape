@@ -1,0 +1,21 @@
+.root {
+  min-width: 0;
+  color: var(--mt-color-fg);
+  border-radius: var(--mt-radius-lg);
+  border: 1px solid transparent;
+}
+
+.root[data-variant='outline'] {
+  background-color: var(--mt-color-surface);
+  border-color: var(--mt-color-border);
+}
+
+.root[data-variant='elevated'] {
+  background-color: var(--mt-color-surface-raised);
+  border-color: var(--mt-color-border);
+  box-shadow: var(--mt-shadow-md);
+}
+
+.root[data-variant='filled'] {
+  background-color: var(--mt-color-bg-subtle);
+}

@@ -1,0 +1,63 @@
+/* Shared look for text-like form controls (Input, Textarea, Select trigger). */
+.control {
+  --_height: 2.5rem;
+  --_px: var(--mt-space-3);
+  --_font: var(--mt-font-size-md);
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  font: inherit;
+  font-size: var(--_font);
+  line-height: var(--mt-line-height-normal);
+  color: var(--mt-color-fg);
+  background-color: var(--mt-color-surface);
+  border: 1px solid var(--mt-color-border-strong);
+  border-radius: var(--mt-radius-md);
+  padding-inline: var(--_px);
+  transition:
+    border-color var(--mt-motion-duration-fast) var(--mt-motion-easing),
+    box-shadow var(--mt-motion-duration-fast) var(--mt-motion-easing);
+}
+
+.control::placeholder,
+.control[data-placeholder] {
+  color: var(--mt-color-fg-subtle);
+  opacity: 1;
+}
+
+.control:hover:not(:disabled):not(:focus) {
+  border-color: var(--mt-color-fg-subtle);
+}
+
+.control:focus,
+.control[data-state='open'] {
+  outline: none;
+  border-color: var(--mt-color-focus-ring);
+  box-shadow: 0 0 0 1px var(--mt-color-focus-ring);
+}
+
+.control[aria-invalid='true'] {
+  border-color: var(--mt-color-danger-solid);
+}
+
+.control[aria-invalid='true']:focus {
+  box-shadow: 0 0 0 1px var(--mt-color-danger-solid);
+}
+
+.control:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  background-color: var(--mt-color-bg-subtle);
+}
+
+.control[data-size='sm'] {
+  --_height: 2rem;
+  --_px: var(--mt-space-2);
+  --_font: var(--mt-font-size-sm);
+}
+
+.control[data-size='lg'] {
+  --_height: 3rem;
+  --_px: var(--mt-space-4);
+  --_font: var(--mt-font-size-lg);
+}

@@ -1,0 +1,118 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { CustomThemeDemo, PresetGallery } from './TokenDocs';
+
+<Meta title="Theming" />
+
+# Theming
+
+## Presets
+
+Mixtape ships five presets: `light` (default), `dark`, `vinyl`, `neon` and `studio`.
+Use the **Theme** menu in the toolbar to preview any story in any theme.
+
+<Unstyled>
+  <PresetGallery />
+</Unstyled>
+
+```tsx
+<ThemeProvider theme="neon">…</ThemeProvider>
+```
+
+Presets are pure CSS, so you can also apply one without React:
+
+```html
+<html data-mt-theme="vinyl"></html>
+```
+
+## Light & dark mode
+
+Pass a `darkTheme` to follow the OS setting, or set `colorMode` explicitly:
+
+```tsx
+<ThemeProvider theme="light" darkTheme="dark">…</ThemeProvider>            // follows the system
+<ThemeProvider theme="vinyl" darkTheme="neon" colorMode={userChoice}>…</ThemeProvider>
+```
+
+## Custom themes
+
+`createTheme` deep-merges your overrides onto a base theme (default `light`). Override as much or as
+little as you like:
+
+```tsx
+import { createTheme, ThemeProvider } from 'mixtape-ui';
+
+const brand = createTheme(
+  {
+    name: 'brand',
+    fonts: { heading: 'Georgia, serif' },
+    radii: { md: '999px', lg: '20px' },
+    colors: {
+      accent: {
+        solid: '#0b6e4f',
+        solidHover: '#085a40',
+        solidActive: '#064632',
+        subtle: '#e6f4ef',
+        subtleHover: '#cde9df',
+        text: '#0b6e4f',
+        border: '#7cc4a9',
+      },
+    },
+  },
+  'light', // base theme
+);
+
+<ThemeProvider theme={brand}>…</ThemeProvider>;
+```
+
+<Unstyled>
+  <CustomThemeDemo />
+</Unstyled>
+
+Custom themes are applied as inline CSS variables. For SSR or a static stylesheet, generate CSS instead:
+
+```ts
+import { themeToCss } from 'mixtape-ui';
+const css = themeToCss(brand, '[data-mt-theme="brand"]');
+```
+
+## Scoped (nested) themes
+
+Providers nest. Everything inside, **including portaled overlays** like dialogs and tooltips,
+uses the nearest theme:
+
+```tsx
+<ThemeProvider theme="light">
+  <Page>
+    <ThemeProvider theme="neon">
+      <NowPlayingBar />
+    </ThemeProvider>
+  </Page>
+</ThemeProvider>
+```
+
+## Using tokens in your own code
+
+Reference tokens as CSS variables in your stylesheets:
+
+```css
+.myPanel {
+  padding: var(--mt-space-4);
+  background: var(--mt-color-surface);
+  border-radius: var(--mt-radius-lg);
+}
+```
+
+…or with the typed `vars` object in TypeScript:
+
+```tsx
+import { vars } from 'mixtape-ui';
+<div style={{ color: vars.colors.accent.text, padding: vars.space[4] }} />;
+```
+
+Read the resolved theme object with `useTheme()`, e.g. to pass colors to a charting library.
+
+## Escape hatches
+
+Component class names are stable (`.mt-Button-root`) and state is exposed via data attributes
+(`[data-variant="solid"]`, `[data-mt-tone="danger"]`, `[data-state="checked"]`), so you can
+fine-tune styles without forking components. Prefer tokens first.

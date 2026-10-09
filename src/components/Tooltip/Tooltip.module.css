@@ -1,0 +1,17 @@
+.content {
+  z-index: var(--mt-z-tooltip);
+  max-width: 18rem;
+  padding: var(--mt-space-1) var(--mt-space-2);
+  font-family: var(--mt-font-body);
+  font-size: var(--mt-font-size-xs);
+  line-height: var(--mt-line-height-normal);
+  color: var(--mt-color-neutral-on-solid);
+  background-color: var(--mt-color-neutral-solid);
+  border-radius: var(--mt-radius-sm);
+  box-shadow: var(--mt-shadow-md);
+  animation: mt-fade-in var(--mt-motion-duration-fast) var(--mt-motion-easing);
+}
+
+.arrow {
+  fill: var(--mt-color-neutral-solid);
+}

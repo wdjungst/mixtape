@@ -1,0 +1,52 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { PresetGallery } from './TokenDocs';
+
+<Meta title="Introduction" />
+
+# Mixtape 📼
+
+**Mixtape** is a themable, accessible React component library.
+Every component reads its look from design tokens (CSS custom properties), so a theme
+can be swapped at runtime, scoped to part of a page, or built from scratch, with zero runtime CSS-in-JS.
+
+<Unstyled>
+  <PresetGallery />
+</Unstyled>
+
+## Install
+
+```bash
+npm install mixtape-ui
+```
+
+```tsx
+import 'mixtape-ui/styles.css';
+import { ThemeProvider, Button } from 'mixtape-ui';
+
+export function App() {
+  return (
+    <ThemeProvider theme="vinyl">
+      <Button>Drop the beat</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+## Principles
+
+- **Tokens all the way down.** Components only use semantic tokens (`--mt-color-accent-solid`),
+  never raw values, so every theme is a complete restyle.
+- **Accessible by default.** Interactive components are built on
+  [Radix Primitives](https://www.radix-ui.com/primitives) for keyboard support, focus management and ARIA.
+  The Accessibility panel in Storybook runs axe on every story.
+- **No global resets.** Mixtape styles only its own elements, so it can be dropped into existing apps.
+- **SSR-friendly.** Preset themes are plain CSS selected with a `data-mt-theme` attribute.
+
+## What's in the box
+
+| Area                | Components                                                                                         |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Theming             | `ThemeProvider`, `createTheme`, `useTheme`, `vars`, `themeToCss`, 5 presets                        |
+| Layout              | `Box`, `Stack`/`HStack`/`VStack`, `Grid`, `Container`, `Card`, `Text`, `Heading`                   |
+| Forms               | `Button`, `IconButton`, `Field`, `Input`, `Textarea`, `Select`, `Checkbox`, `RadioGroup`, `Switch` |
+| Overlays & feedback | `Dialog`, `Popover`, `Tooltip`, `Tabs`, `Toast`, `Alert`, `Badge`, `Spinner`                       |

@@ -1,0 +1,5 @@
+.root {
+  display: block;
+  min-height: var(--_height);
+  padding-block: var(--mt-space-2);
+}

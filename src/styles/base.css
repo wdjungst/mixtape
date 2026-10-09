@@ -1,0 +1,111 @@
+/*
+ * Base styles. Deliberately minimal: Mixtape never resets the host page globally.
+ * Everything here is scoped to Mixtape's own `mt-` classes or theme roots.
+ */
+
+.mt-root {
+  color-scheme: var(--mt-color-scheme);
+  color: var(--mt-color-fg);
+  background-color: var(--mt-color-bg);
+  font-family: var(--mt-font-body);
+  font-size: var(--mt-font-size-md);
+  line-height: var(--mt-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+[class^='mt-'],
+[class*=' mt-'],
+[class^='mt-']::before,
+[class*=' mt-']::before,
+[class^='mt-']::after,
+[class*=' mt-']::after {
+  box-sizing: border-box;
+}
+
+/*
+ * Tone mapping. Components set `data-mt-tone` and read the generic `--mt-tone-*` variables,
+ * so one stylesheet works for every tone. These must live on the toned element itself (not
+ * :root): a var() inside a custom property resolves where it is declared, so a root-level
+ * mapping would ignore nested themes.
+ */
+[data-mt-tone='accent'] {
+  --mt-tone-solid: var(--mt-color-accent-solid);
+  --mt-tone-solid-hover: var(--mt-color-accent-solid-hover);
+  --mt-tone-solid-active: var(--mt-color-accent-solid-active);
+  --mt-tone-on-solid: var(--mt-color-accent-on-solid);
+  --mt-tone-subtle: var(--mt-color-accent-subtle);
+  --mt-tone-subtle-hover: var(--mt-color-accent-subtle-hover);
+  --mt-tone-text: var(--mt-color-accent-text);
+  --mt-tone-border: var(--mt-color-accent-border);
+}
+
+[data-mt-tone='neutral'] {
+  --mt-tone-solid: var(--mt-color-neutral-solid);
+  --mt-tone-solid-hover: var(--mt-color-neutral-solid-hover);
+  --mt-tone-solid-active: var(--mt-color-neutral-solid-active);
+  --mt-tone-on-solid: var(--mt-color-neutral-on-solid);
+  --mt-tone-subtle: var(--mt-color-neutral-subtle);
+  --mt-tone-subtle-hover: var(--mt-color-neutral-subtle-hover);
+  --mt-tone-text: var(--mt-color-neutral-text);
+  --mt-tone-border: var(--mt-color-neutral-border);
+}
+
+[data-mt-tone='danger'] {
+  --mt-tone-solid: var(--mt-color-danger-solid);
+  --mt-tone-solid-hover: var(--mt-color-danger-solid-hover);
+  --mt-tone-solid-active: var(--mt-color-danger-solid-active);
+  --mt-tone-on-solid: var(--mt-color-danger-on-solid);
+  --mt-tone-subtle: var(--mt-color-danger-subtle);
+  --mt-tone-subtle-hover: var(--mt-color-danger-subtle-hover);
+  --mt-tone-text: var(--mt-color-danger-text);
+  --mt-tone-border: var(--mt-color-danger-border);
+}
+
+[data-mt-tone='success'] {
+  --mt-tone-solid: var(--mt-color-success-solid);
+  --mt-tone-solid-hover: var(--mt-color-success-solid-hover);
+  --mt-tone-solid-active: var(--mt-color-success-solid-active);
+  --mt-tone-on-solid: var(--mt-color-success-on-solid);
+  --mt-tone-subtle: var(--mt-color-success-subtle);
+  --mt-tone-subtle-hover: var(--mt-color-success-subtle-hover);
+  --mt-tone-text: var(--mt-color-success-text);
+  --mt-tone-border: var(--mt-color-success-border);
+}
+
+[data-mt-tone='warning'] {
+  --mt-tone-solid: var(--mt-color-warning-solid);
+  --mt-tone-solid-hover: var(--mt-color-warning-solid-hover);
+  --mt-tone-solid-active: var(--mt-color-warning-solid-active);
+  --mt-tone-on-solid: var(--mt-color-warning-on-solid);
+  --mt-tone-subtle: var(--mt-color-warning-subtle);
+  --mt-tone-subtle-hover: var(--mt-color-warning-subtle-hover);
+  --mt-tone-text: var(--mt-color-warning-text);
+  --mt-tone-border: var(--mt-color-warning-border);
+}
+
+@keyframes mt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes mt-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class^='mt-'],
+  [class*=' mt-'] {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

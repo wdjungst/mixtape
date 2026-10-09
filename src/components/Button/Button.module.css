@@ -1,0 +1,132 @@
+.root {
+  --_height: 2.5rem;
+  --_px: var(--mt-space-4);
+  --_font: var(--mt-font-size-sm);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mt-space-2);
+  height: var(--_height);
+  padding-inline: var(--_px);
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--_font);
+  font-weight: var(--mt-font-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--mt-radius-md);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--mt-motion-duration-fast) var(--mt-motion-easing),
+    border-color var(--mt-motion-duration-fast) var(--mt-motion-easing),
+    color var(--mt-motion-duration-fast) var(--mt-motion-easing),
+    transform var(--mt-motion-duration-fast) var(--mt-motion-easing);
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--mt-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.root:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.root:disabled,
+.root[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.root[data-loading] {
+  cursor: progress;
+  opacity: 1;
+}
+
+/* Sizes */
+.root[data-size='sm'] {
+  --_height: 2rem;
+  --_px: var(--mt-space-3);
+}
+.root[data-size='lg'] {
+  --_height: 3rem;
+  --_px: var(--mt-space-6);
+  --_font: var(--mt-font-size-md);
+}
+
+/* Variants: colors come from the tone mapping (`data-mt-tone`) in base.css. */
+.root[data-variant='solid'] {
+  background-color: var(--mt-tone-solid);
+  color: var(--mt-tone-on-solid);
+}
+.root[data-variant='solid']:hover:not(:disabled) {
+  background-color: var(--mt-tone-solid-hover);
+}
+.root[data-variant='solid']:active:not(:disabled) {
+  background-color: var(--mt-tone-solid-active);
+}
+
+.root[data-variant='soft'] {
+  background-color: var(--mt-tone-subtle);
+  color: var(--mt-tone-text);
+}
+.root[data-variant='soft']:hover:not(:disabled) {
+  background-color: var(--mt-tone-subtle-hover);
+}
+
+.root[data-variant='outline'] {
+  background-color: transparent;
+  border-color: var(--mt-tone-border);
+  color: var(--mt-tone-text);
+}
+.root[data-variant='outline']:hover:not(:disabled) {
+  background-color: var(--mt-tone-subtle);
+}
+
+.root[data-variant='ghost'] {
+  background-color: transparent;
+  color: var(--mt-tone-text);
+}
+.root[data-variant='ghost']:hover:not(:disabled) {
+  background-color: var(--mt-tone-subtle);
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+}
+
+/* While loading, hide the label but keep its width; center the spinner over it. */
+.root[data-loading] .content > :not(.spinner) {
+  visibility: hidden;
+}
+.spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+.icon {
+  display: inline-flex;
+  font-size: 1.15em;
+}
+
+.fullWidth {
+  display: flex;
+  width: 100%;
+}
+
+/* Used by IconButton */
+.iconOnly {
+  width: var(--_height);
+  padding-inline: 0;
+}
+.iconOnly .content {
+  font-size: 1.25em;
+}

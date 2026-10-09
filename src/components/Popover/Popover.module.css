@@ -1,0 +1,23 @@
+.content {
+  z-index: var(--mt-z-popover);
+  min-width: 12rem;
+  max-width: min(24rem, var(--radix-popover-content-available-width));
+  padding: var(--mt-space-4);
+  font-family: var(--mt-font-body);
+  font-size: var(--mt-font-size-sm);
+  color: var(--mt-color-fg);
+  background-color: var(--mt-color-surface-raised);
+  border: 1px solid var(--mt-color-border);
+  border-radius: var(--mt-radius-lg);
+  box-shadow: var(--mt-shadow-lg);
+  animation: mt-pop-in var(--mt-motion-duration-fast) var(--mt-motion-easing);
+}
+
+.content:focus-visible {
+  outline: 2px solid var(--mt-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.arrow {
+  fill: var(--mt-color-surface-raised);
+}

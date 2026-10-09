@@ -1,0 +1,102 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mt-space-2);
+  height: var(--_height);
+  text-align: start;
+  cursor: pointer;
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+}
+
+.value {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.chevron {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--mt-color-fg-muted);
+  transition: transform var(--mt-motion-duration-fast) var(--mt-motion-easing);
+}
+
+.trigger[data-state='open'] .chevron {
+  transform: rotate(180deg);
+}
+
+.content {
+  z-index: var(--mt-z-dropdown);
+  min-width: var(--radix-select-trigger-width);
+  max-height: min(var(--radix-select-content-available-height), 20rem);
+  overflow: hidden;
+  background-color: var(--mt-color-surface-raised);
+  color: var(--mt-color-fg);
+  border: 1px solid var(--mt-color-border);
+  border-radius: var(--mt-radius-md);
+  box-shadow: var(--mt-shadow-lg);
+  font-family: var(--mt-font-body);
+  animation: mt-pop-in var(--mt-motion-duration-fast) var(--mt-motion-easing);
+}
+
+.viewport {
+  padding: var(--mt-space-1);
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: var(--mt-space-1) var(--mt-space-8) var(--mt-space-1) var(--mt-space-3);
+  font-size: var(--mt-font-size-sm);
+  border-radius: var(--mt-radius-sm);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.item[data-highlighted] {
+  background-color: var(--mt-color-accent-subtle);
+  color: var(--mt-color-accent-text);
+}
+
+.item[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.itemIndicator {
+  position: absolute;
+  right: var(--mt-space-2);
+  display: inline-flex;
+  color: var(--mt-color-accent-text);
+}
+
+.groupLabel {
+  padding: var(--mt-space-2) var(--mt-space-3) var(--mt-space-1);
+  font-size: var(--mt-font-size-xs);
+  font-weight: var(--mt-font-weight-semibold);
+  color: var(--mt-color-fg-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.separator {
+  height: 1px;
+  margin: var(--mt-space-1);
+  background-color: var(--mt-color-border);
+}
+
+.scrollButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  color: var(--mt-color-fg-muted);
+  cursor: default;
+}

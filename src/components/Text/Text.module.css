@@ -1,0 +1,36 @@
+.root {
+  margin: 0;
+  line-height: var(--mt-line-height-normal);
+}
+
+.root[data-tone='default'] {
+  color: inherit;
+}
+.root[data-tone='muted'] {
+  color: var(--mt-color-fg-muted);
+}
+.root[data-tone='subtle'] {
+  color: var(--mt-color-fg-subtle);
+}
+.root[data-tone='accent'] {
+  color: var(--mt-color-accent-text);
+}
+.root[data-tone='danger'] {
+  color: var(--mt-color-danger-text);
+}
+.root[data-tone='success'] {
+  color: var(--mt-color-success-text);
+}
+.root[data-tone='warning'] {
+  color: var(--mt-color-warning-text);
+}
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mono {
+  font-family: var(--mt-font-mono);
+}

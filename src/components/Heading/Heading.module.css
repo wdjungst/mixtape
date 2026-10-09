@@ -1,0 +1,8 @@
+.root {
+  margin: 0;
+  font-family: var(--mt-font-heading);
+  font-weight: var(--mt-font-weight-bold);
+  line-height: var(--mt-line-height-tight);
+  letter-spacing: -0.01em;
+  color: inherit;
+}

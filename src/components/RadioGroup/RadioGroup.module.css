@@ -1,0 +1,65 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mt-space-2);
+}
+
+.groupLabel {
+  font-size: var(--mt-font-size-sm);
+  font-weight: var(--mt-font-weight-medium);
+  color: var(--mt-color-fg);
+}
+
+.items {
+  display: flex;
+  gap: var(--mt-space-2) var(--mt-space-4);
+}
+
+.items[data-orientation='vertical'] {
+  flex-direction: column;
+}
+
+.items[data-orientation='horizontal'] {
+  flex-wrap: wrap;
+}
+
+.radio {
+  all: unset;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 1px;
+  background-color: var(--mt-color-surface);
+  border: 1px solid var(--mt-color-border-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color var(--mt-motion-duration-fast) var(--mt-motion-easing);
+}
+
+.radio:hover:not([data-disabled]) {
+  border-color: var(--mt-color-accent-solid);
+}
+
+.radio:focus-visible {
+  outline: 2px solid var(--mt-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.radio[data-state='checked'] {
+  border-color: var(--mt-color-accent-solid);
+  border-width: 5px;
+}
+
+.radio[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* The thick border draws the checked state; the indicator only exists for Radix semantics. */
+.dot {
+  display: none;
+}
